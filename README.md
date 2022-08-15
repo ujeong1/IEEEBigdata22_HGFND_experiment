@@ -14,7 +14,7 @@ conda install pytorch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0 cudatoolkit=1
 conda install pyg -c pyg
 ```
 
-3. Install Dependencies using <code> conda install --file requirements.txt </code>
+3. Install Dependencies using <code> pip install -r requirements.txt </code>
 
 4. Run the code with following commandline/parameters
 ```bash
