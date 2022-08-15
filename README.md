@@ -20,4 +20,4 @@ conda install pyg -c pyg
 4. Run the code with following commandline
 ```bash
  python main.py --use_user true --use_date true --use_entity true 
-```# IEEEBigdata22_HGFND
+```
