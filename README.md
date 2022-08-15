@@ -15,11 +15,12 @@ conda install pyg -c pyg
 ```
 
 3. Install Dependencies using <code> conda install --file requirements.txt </code>
-3. Run the code with following commandline/parameters
+
+4. Run the code with following commandline/parameters
 ```bash
  python main.py --use_user true --use_date true --use_entity true 
 ```
 
-4. [Downloading UPFD dataset](https://github.com/safe-graph/GNN-FakeNews)
+5. [Downloading UPFD dataset](https://github.com/safe-graph/GNN-FakeNews)
 - The UPFD dataset will be automatically downloaded to <code> data/{dataset-name}/raw/</code> when runnig <code> main.py </code>
 
