@@ -20,7 +20,7 @@ conda install pyg -c pyg
 ```bash
  python main.py --use_user true --use_date true --use_entity true 
 ```
-
-5. [Downloading UPFD dataset](https://github.com/safe-graph/GNN-FakeNews)
+# Dataset
 - The UPFD dataset will be automatically downloaded to <code> data/{dataset-name}/raw/</code> when runnig <code> main.py </code>
+- You can also manually download the dataset from [UPFD github](https://github.com/safe-graph/GNN-FakeNews)
 
