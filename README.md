@@ -1,7 +1,7 @@
 # Setups
 
 1. [Pytorch Installation on Conda](https://pytorch.org/)
-: We use following command to install pytorch on Ubuntu 20.04 using Conda with python 3.7.6
+: We use following command to install pytorch on Ubuntu 20.04 using Conda with python 3.7.6 and CUDA 10.2
 
 ```bash
 conda install pytorch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0 cudatoolkit=10.2 -c Pytorch
