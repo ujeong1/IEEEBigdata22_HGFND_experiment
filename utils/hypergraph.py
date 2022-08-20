@@ -69,7 +69,6 @@ class Hypergraph:
         return hypergraph
 
     def get_entity_incidence_matrix(self):
-        #threshold = 3
         dirname = "data/"
         if self.dataset == "politifact":
             filename = "hyperedges_pol_entity.pkl"
@@ -81,8 +80,6 @@ class Hypergraph:
 
         hyperedges = []
         for hyperedge in data.values():
-            #if len(hyperedge) >= threshold:
-            #    continue
             hyperedges.append(hyperedge)
 
         return hyperedges
