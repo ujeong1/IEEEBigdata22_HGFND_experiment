@@ -24,7 +24,7 @@ conda install pyg -c pyg
 
 5. Run the code with following commandline/parameters
 ```bash
- python main.py --use_user true --use_date true --use_entity true 
+ python main.py --use_user true --use_date true --use_entity true --dataset politifact
 ```
 # Dataset
 - The UPFD dataset will be automatically downloaded to <code> data/{dataset-name}/raw/</code> when runnig <code> main.py </code>
