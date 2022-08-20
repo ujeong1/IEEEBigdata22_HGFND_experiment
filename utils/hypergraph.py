@@ -1,9 +1,7 @@
 import numpy as np
 import scipy.sparse as sp
-from utils.clustering import MultiviewClustering
 import torch
 import pickle
-from utils.similarity import Node_simliarity
 
 
 class Hypergraph:
