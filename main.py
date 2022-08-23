@@ -90,6 +90,7 @@ hypergraph = builder.get_hyperedges(not_train_idx=not_train_idx)
 alias_inputs, HT, node_masks = builder.get_adj_matrix(hypergraph, nodes_seq)
 
 HT = torch.Tensor(np.array(HT)).float().to(device)
+print(HT.shape)
 
 hypergraph_model = HGFND(args)
 model = PropagationEncoder(args, hypergraph_model).to(device)

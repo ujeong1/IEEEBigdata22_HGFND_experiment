@@ -12,7 +12,32 @@ class Hypergraph:
         self.use_date = opt.use_date
         self.use_entity = opt.use_entity
         self.dataset = opt.dataset
+    def statics(self, hypergraph):
+        total_nodes = []
+        print("Number of edges", len(hypergraph))
+        for nodes in hypergraph:
+            total_nodes.append(len(nodes))
+        import statistics
+        avg_edge_degree = statistics.mean(total_nodes)
+        edge_std = statistics.stdev(total_nodes)
+        max_edge_degree = max(total_nodes)
+        node_ids = []
+        for nodes in hypergraph:
+            node_ids+=nodes
+        node_ids = list(set(node_ids))
 
+        node_id_dict = dict()
+        for node_id in node_ids:
+            node_id_dict[node_id] = 0
+        for nodes in hypergraph:
+            for node_id in nodes:
+                node_id_dict[node_id]+=1
+        num_nodes = len(node_ids)
+
+        avg_node_degree = sum(node_id_dict.values())/num_nodes
+        node_std = statistics.stdev(node_id_dict.values())
+        max_node_degree = max(node_id_dict.values())
+        print(avg_node_degree,max_node_degree, node_std, avg_edge_degree, max_edge_degree, edge_std)
     def get_hyperedges(self, not_train_idx):
         hyperedges = []
 
@@ -35,7 +60,7 @@ class Hypergraph:
             if len(hyperedge) < 2:
                 continue
             result.append(hyperedge)
-
+        # self.statics(result)
         return result
 
     def get_user_incidence_matrix(self):
@@ -71,7 +96,6 @@ class Hypergraph:
         return hypergraph
 
     def get_entity_incidence_matrix(self):
-        threshold = 3
         dirname = "data/"
         if self.dataset == "politifact":
             filename = "hyperedges_pol_entity.pkl"
@@ -83,8 +107,6 @@ class Hypergraph:
 
         hyperedges = []
         for hyperedge in data.values():
-            if len(hyperedge) >= threshold:
-                continue
             hyperedges.append(hyperedge)
 
         return hyperedges
