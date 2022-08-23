@@ -35,7 +35,7 @@ parser.add_argument('--dropout', type=float, default=0.3, help='dropout rate')
 parser.add_argument('--lr', type=float, default=0.001, help='learning rate')
 parser.add_argument('--weight_decay', type=float, default=0.01, help='weight_decay penalty')
 parser.add_argument('--batchSize', type=int, default=128, help='input batch size')
-parser.add_argument('--epoch', type=int, default=100, help='epoch size')
+parser.add_argument('--epoch', type=int, default=200, help='epoch size')
 parser.add_argument('--shuffle', type=bool, default=True, help='shuffling training index')
 parser.add_argument('--early_stopping', type=bool, default=True, help='stop training if the patience reaches its limit')
 parser.add_argument('--use_user', type=str2bool, nargs='?',
