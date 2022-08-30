@@ -29,7 +29,6 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 parser = argparse.ArgumentParser()
 parser.add_argument('--dataset', type=str, default='politifact',
                     choices=['politifact', 'gossipcop'])
-parser.add_argument('--feature', type=str, default='bert', help='feature matrix for initial node representation')
 parser.add_argument('--hiddenSize', type=int, default=128, help='hidden state size for propagation encoding')
 parser.add_argument('--dropout', type=float, default=0.3, help='dropout rate')
 parser.add_argument('--lr', type=float, default=0.001, help='learning rate')
@@ -37,7 +36,7 @@ parser.add_argument('--weight_decay', type=float, default=0.01, help='weight_dec
 parser.add_argument('--batchSize', type=int, default=128, help='input batch size')
 parser.add_argument('--epoch', type=int, default=200, help='epoch size')
 parser.add_argument('--shuffle', type=bool, default=True, help='shuffling training index')
-parser.add_argument('--early_stopping', type=bool, default=True, help='stop training if the patience reaches its limit')
+parser.add_argument('--early_stopping', type=bool, default=False, help='stop training if the patience reaches its limit')
 parser.add_argument('--use_user', type=str2bool, nargs='?',
                     const=True, default=False, help='use shared user among news for building hyperedges')
 parser.add_argument('--use_date', type=str2bool, nargs='?',
@@ -55,7 +54,7 @@ torch.manual_seed(args.seed)
 if torch.cuda.is_available():
     torch.cuda.manual_seed(args.seed)
 
-dataset = FNNDataset(root='data', feature=args.feature, empty=False, name=args.dataset, transform=ToUndirected())
+dataset = FNNDataset(root='data', feature="bert", empty=False, name=args.dataset, transform=ToUndirected())
 
 args.num_classes = dataset.num_classes
 args.num_features = dataset.num_features
@@ -131,8 +130,8 @@ def test(test_idx, verbose=False):
     out_log = []
     for idx in range(0, num_samples, args.batchSize):
         slices = test_idx[idx:min(idx + args.batchSize, num_samples)]
-        out, _ = model(data_nodes, data_edge_index, HT, data_batch, slices)
-        scores = model.compute_scores(out)
+        output, _ = model(data_nodes, data_edge_index, HT, data_batch, slices)
+        scores = model.compute_scores(output)
         pred = scores.argmax(dim=-1)
         test_preds += list(pred.detach().cpu().numpy())
         temp_labels = data_labels[slices]
@@ -179,3 +178,5 @@ print("** The Best model on test dataset: ")
 model.load_state_dict(state_dict)
 acc, [f1_macro, f1_micro, precision, recall] = test(test_idx, verbose=True)
 print(acc, f1_macro, f1_micro, precision, recall)
+with open('result.txt', "a") as f:
+    f.write(str(acc) + " " + str(f1_macro) + "\n")

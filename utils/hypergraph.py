@@ -27,8 +27,8 @@ class Hypergraph:
         node_id_dict = dict()
         for node_id in node_ids:
             node_id_dict[node_id] = 0
-        for nodes in hypergraph:
-            for node_id in nodes:
+        for hyperedge in hypergraph:
+            for node_id in hyperedge:
                 node_id_dict[node_id]+=1
         num_nodes = len(node_ids)
 
@@ -36,6 +36,7 @@ class Hypergraph:
         node_std = statistics.stdev(node_id_dict.values())
         max_node_degree = max(node_id_dict.values())
         print(avg_node_degree,max_node_degree, node_std, avg_edge_degree, max_edge_degree, edge_std)
+        print(len(set(node_id_dict.keys())))
     def get_hyperedges(self, not_train_idx):
         hyperedges = []
 
