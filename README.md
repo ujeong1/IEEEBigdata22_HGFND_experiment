@@ -22,10 +22,12 @@ conda install pyg -c pyg
 
 4. Install Dependencies using <code> pip install -r requirements.txt </code>
 
-5. Run the code with following commandline/parameters
+# Usage
+1. Run the code with following commandline/parameters
 ```bash
  python main.py --use_user true --use_date true --use_entity true --dataset politifact
 ```
+
 # Dataset
 - The UPFD dataset will be automatically downloaded to <code> data/{dataset-name}/raw/</code> when runnig <code> main.py </code>
 - You can also manually download the dataset from [UPFD github](https://github.com/safe-graph/GNN-FakeNews)
