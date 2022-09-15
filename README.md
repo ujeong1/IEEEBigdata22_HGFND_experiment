@@ -7,7 +7,7 @@ conda create --name HGFND python==3.7.6
 source activate HGFND
 ```
 2. [Pytorch Installation on Conda](https://pytorch.org/)
-: We use following command to install pytorch based on CUDA 10.2 for nvidia driver
+: We use following command to install pytorch based on CUDA 10.2 for nvidia driver (Please check your CUDA version by <code>nvcc --version</code> before the installation)
 
 ```bash
 conda install pytorch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0 cudatoolkit=10.2 -c Pytorch
