@@ -28,6 +28,12 @@ conda install pyg -c pyg
  python main.py --use_user true --use_date true --use_entity true --dataset politifact
 ```
 
+# Trouble Shooting
+1. Please apply <code>conda uninstall torch_spline_conv</code>if you encounter the following error:
+<code>OSError: /lib64/libm.so.6: version `GLIBC_2.27' not found</code>
+2. Please refer to [PyG FAQ](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html#id1) for any types of error caused by PyG. 
+
+
 # Dataset
 - The UPFD dataset will be automatically downloaded to <code> data/{dataset-name}/raw/</code> when runnig <code> main.py </code>
 - You can also manually download the dataset from [UPFD github](https://github.com/safe-graph/GNN-FakeNews)
