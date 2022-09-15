@@ -33,7 +33,7 @@ conda install pyg -c pyg
 
 ```bash
 OSError: /lib64/libm.so.6: version `GLIBC_2.27' not found
-'''
+```
 
 2. Please refer to [PyG FAQ](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html#id1) for any types of error caused by PyG. 
 
