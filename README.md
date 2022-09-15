@@ -31,7 +31,9 @@ conda install pyg -c pyg
 # Trouble Shooting
 1. Please apply <code>pip uninstall torch_spline_conv</code> if you encounter the following error:
 
-<code>OSError: /lib64/libm.so.6: version `GLIBC_2.27' not found</code>
+```bash
+OSError: /lib64/libm.so.6: version `GLIBC_2.27' not found
+'''
 
 2. Please refer to [PyG FAQ](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html#id1) for any types of error caused by PyG. 
 
