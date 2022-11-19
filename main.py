@@ -36,7 +36,6 @@ parser.add_argument('--weight_decay', type=float, default=0.01, help='weight_dec
 parser.add_argument('--batchSize', type=int, default=128, help='input batch size')
 parser.add_argument('--epoch', type=int, default=200, help='epoch size')
 parser.add_argument('--shuffle', type=bool, default=True, help='shuffling training index')
-parser.add_argument('--early_stopping', type=bool, default=False, help='stop training if the patience reaches its limit')
 parser.add_argument('--use_user', type=str2bool, nargs='?',
                     const=True, default=False, help='use shared user among news for building hyperedges')
 parser.add_argument('--use_date', type=str2bool, nargs='?',
@@ -152,13 +151,8 @@ def test(test_idx, verbose=False):
 
 
 best_val_acc = 0
-if args.early_stopping:
-    patience = 10
-else:
-    patience = args.epoch
+
 for epoch in range(1, args.epoch):
-    if patience < 0:
-        break
     loss = train(train_idx)
     print(f'Epoch: {epoch:02d}, Loss: {loss:.4f}')
 
@@ -167,12 +161,6 @@ for epoch in range(1, args.epoch):
     if best_val_acc < val_acc:
         best_val_acc = val_acc
         state_dict = copy.deepcopy(model.state_dict())
-        if args.early_stopping:
-            patience = 10
-        else:
-            patience = 100
-    else:
-        patience -= 1
 
 print("** The Best model on test dataset: ")
 model.load_state_dict(state_dict)
